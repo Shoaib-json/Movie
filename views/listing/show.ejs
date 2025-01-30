@@ -1,0 +1,77 @@
+<% layout("layouts/boilerplate") -%>
+<body>
+<div class="listing-container">
+    
+    <div class="listing-card">
+        <img src="<%= lists.image.url %>" class="listing-image" alt="Movie Image">
+        
+        <div class="listing-details">
+            <h1 class="listing-title"><%= lists.title %></h1>
+            <i><p class="listing-description">Directed by: <%= lists.director %></p></i>
+            <p class="listing-description"><%= lists.description %></p>
+        </div>
+
+        <ul class="listing-info">
+            <li>Year: <%= lists.year %></li>
+            <li>Duration: <%= lists.duration %> minutes</li>
+            <li>Rating: <%= lists.rating %> ★</li>
+        </ul>
+
+        <!-- Admin Actions -->
+        <% if (currUser && currUser._id.equals(lists.admin._id)) { %>
+        <div class="listing-actions">
+            <a href="/<%= lists._id %>/edit" class="btn btn-edit">Edit</a>
+            <form method="post" action="/<%= lists._id %>/delete?_method=DELETE" class="delete-form">
+                <button type="submit" class="btn btn-delete">Delete</button>
+            </form>
+        </div>
+        <% } %> 
+    </div>
+
+    <!-- review Section -->
+    <% if (currUser) { %>
+    <div class="r-section">
+        <form method="post" action="/re/<%= lists._id %>" class="r-form">
+            <h2>Leave a r</h2>
+            
+            
+            <input type="text" name="rating" id="rating-value" required>
+        
+
+            <div class="form-group">
+                <label for="comment">Comment</label>
+                <textarea name="comment" id="comment" required class="r-comment"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-submit">Submit r</button>
+        </form>
+    </div>
+    <% } %> 
+
+    <!-- review List -->
+    <div class="review-list">
+        <h2>review</h2>
+        <% if (lists.review && lists.review.length > 0) { %>
+            <ul>
+                <% for (let r of lists.review) { %>
+                    <li class="r-item">
+                        <strong><%= r.user.username %></strong>
+                        <div class="r-content">
+                            <div class="r-rating">Rating: <%= r.rating %> ★</div>
+                            <div class="r-comment">Comment: <%= r.comment %></div>
+                        </div>
+                        <% if (currUser && currUser._id.equals(r.user._id)) { %>
+                        <form method="POST" action="/re/<%= lists._id %>/<%= r._id %>?_method=DELETE" class="r-delete-form">
+                            <button type="submit" class="btn btn-delete-r">Delete</button>
+                        </form>
+                        <% } %>
+                    </li>
+                <% } %>
+            </ul>
+        <% } else { %>
+            <p class="no-review">No review yet</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

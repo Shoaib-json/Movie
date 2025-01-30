@@ -1,0 +1,24 @@
+<% layout("layouts/boilerplate") -%>
+<body>
+    <h2>Movie Listings</h2>
+    
+    <% if (q && q.length > 0) { %>
+        <% for (let p of q) { %>
+        <a href="/<%= p._id %>" class="text-decoration-none"> 
+            <div>
+                <h3><%= p.title %></h3>
+                <p><strong>Rating:</strong> <%= p.rating %> </p>
+                <p><strong>Duration:</strong> <%= p.duration %> minutes</p>
+                <p><strong>Poster:</strong></p>
+                <img src="<%= p.image.url %>" alt="<%= p.title %> Poster" width="150">
+            </div>
+        </a>
+            <hr>
+        <% } %>
+    <% } else { %>
+        <p>No listings available.</p>
+    <% } %>
+
+</body>
+</html>
+

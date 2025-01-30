@@ -1,0 +1,80 @@
+/* IMDb Style Theme */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Centering Container */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Movie Card */
+.movie-card {
+    display: flex;
+    align-items: center;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+    border: 1px solid #333;
+    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.2);
+    text-decoration: none;
+    color: inherit;
+}
+
+.movie-card:hover {
+    transform: scale(1.03);
+    background-color: #2c2c2c;
+    box-shadow: 0 6px 15px rgba(255, 204, 0, 0.4);
+}
+
+/* Movie Poster */
+.movie-poster {
+    width: 120px;
+    height: 180px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid #ffcc00;
+    margin-right: 15px;
+}
+
+/* Movie Info */
+.movie-info h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: #ffcc00;
+}
+
+.movie-info p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #ccc;
+}
+
+/* Rating & Duration */
+.movie-info p strong {
+    color: #ffcc00;
+}
+
+/* "No Listings" Message */
+.no-listings {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 50px;
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/* Header */
+h2 {
+    text-align: center;
+    color: #ffcc00;
+    margin-bottom: 20px;
+}

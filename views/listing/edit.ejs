@@ -1,0 +1,69 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+    <form method="post" action="/<%=q._id%>/update?_method=PUT" enctype="multipart/form-data" >
+        <!-- Image Upload -->
+        <div class="mb-3">
+            <label for="fileInput">Upload Movie Poster</label>
+            <input type="file" id="fileInput" name="image" required>
+        </div>
+        <!-- Display Existing Image -->
+        <div>
+            <img src="<%=q.image.url%>" height="120px" alt="Movie Poster">
+        </div>
+
+        <!-- Movie Title -->
+        <div class="col-md-6 col-12">
+            <label for="inputTitle" class="form-label">Movie Title</label>
+            <input class="form-control" id="inputTitle" value="<%=q.title%>" name="title">
+        </div>
+
+        <!-- Director -->
+        <div class="col-md-6 col-12">
+            <label for="inputDirector" class="form-label">Director</label>
+            <input class="form-control" id="inputDirector" value="<%=q.director%>" name="director">
+        </div>
+
+        <!-- Writer -->
+        <div class="col-md-6 col-12">
+            <label for="inputWriter" class="form-label">Writer</label>
+            <input class="form-control" id="inputWriter" value="<%=q.writer%>" name="writer">
+        </div>
+
+        <!-- Cast -->
+        <div class="col-12">
+            <label for="inputCast" class="form-label">Cast</label>
+            <input type="text" class="form-control" id="inputCast" value="<%=q.cast.join(', ')%>" name="cast">
+            <small>Enter multiple cast members separated by commas</small>
+        </div>
+
+        <!-- Year -->
+        <div class="col-md-6 col-12">
+            <label for="inputYear" class="form-label">Release Year</label>
+            <input class="form-control" id="inputYear" value="<%=q.year%>" name="year" type="number">
+        </div>
+
+        <!-- Duration -->
+        <div class="col-md-6 col-12">
+            <label for="inputDuration" class="form-label">Duration (minutes)</label>
+            <input class="form-control" id="inputDuration" value="<%=q.duration%>" name="duration" type="number">
+        </div>
+
+        <!-- Movie Rating -->
+        <div class="col-md-6 col-12">
+            <label for="inputRating" class="form-label">Rating</label>
+            <input class="form-control" id="inputRating" value="<%=q.rating%>" name="rating" type="number" min="1" max="5">
+        </div>
+
+        <!-- Movie Description -->
+        <div class="col-12">
+            <label for="inputDescription" class="form-label">Movie Description</label>
+            <textarea class="form-control" id="inputDescription" name="description" rows="3"><%=q.description%></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary w-100">Update Movie</button>
+        </div>
+    </form>
+</body>
+</html>
